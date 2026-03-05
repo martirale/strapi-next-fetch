@@ -5,6 +5,14 @@ Minimal Strapi REST API client for Next.js App Router with built-in ISR cache su
 Handles auth headers, query string serialization for nested params (filters, populate, pagination),
 and Next.js fetch cache options (`revalidate`, `force-cache`, `no-store`).
 
+## Why this package?
+
+Strapi has an official JavaScript SDK, but I didn't know about it when I started integrating Strapi into my projects — so I built my own fetch logic from scratch. Over time it became a consistent pattern across projects, so I extracted it into a package.
+
+It's intentionally focused on Next.js App Router and its `fetch` cache model (`revalidate`, `force-cache`, `no-store`), which is my default stack. If that matches yours, this might save you some boilerplate.
+
+If you prefer the official route, [Strapi's SDK](https://www.npmjs.com/package/@strapi/client) is always an option.
+
 ## Install
 
 ```bash
@@ -76,7 +84,7 @@ const data = await strapi.fetch("/api/articles", {
 const data = await strapi.fetch(
   "/api/articles",
   { sort: ["date:desc"] },
-  { revalidate: 900 }
+  { revalidate: 900 },
 );
 ```
 
@@ -86,7 +94,7 @@ const data = await strapi.fetch(
 const data = await strapi.fetch(
   "/api/articles",
   { filters: { slug: { $eq: slug } } },
-  { cache: "no-store" }
+  { cache: "no-store" },
 );
 ```
 
@@ -96,7 +104,7 @@ const data = await strapi.fetch(
 const data = await strapi.fetch(
   "/api/categories",
   { fields: ["title", "slug"], sort: ["title:asc"] },
-  { revalidate: 86400 }
+  { revalidate: 86400 },
 );
 ```
 
@@ -109,7 +117,7 @@ const data = await strapi.fetch(
     filters: { slug: { $eq: slug } },
     status: "draft",
   },
-  { cache: "no-store" }
+  { cache: "no-store" },
 );
 ```
 
@@ -142,7 +150,7 @@ export async function getLatestPosts({ page = 1, pageSize = 9 } = {}) {
       pagination: { page, pageSize },
       sort: ["date:desc"],
     },
-    { revalidate: 900 }
+    { revalidate: 900 },
   );
 }
 
@@ -157,7 +165,7 @@ export async function getSingleArticle(slug) {
       },
       filters: { slug: { $eq: slug } },
     },
-    { revalidate: 900 }
+    { revalidate: 900 },
   );
 }
 ```
