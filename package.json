@@ -1,7 +1,7 @@
 {
   "name": "@itsmrtr/strapi-next-fetch",
   "version": "1.0.0",
-  "description": "",
+  "description": "Minimal Strapi REST API client for Next.js App Router with built-in cache support",
   "type": "module",
   "main": "./src/index.js",
   "exports": {
