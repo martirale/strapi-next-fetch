@@ -1,5 +1,5 @@
 {
-  "name": "strapi-next-fetch",
+  "name": "@itsmrtr/strapi-next-fetch",
   "version": "1.0.0",
   "description": "",
   "type": "module",
@@ -10,5 +10,12 @@
   "files": [
     "src"
   ],
-  "license": "MIT"
+  "keywords": ["strapi", "next.js", "fetch", "cms", "app-router", "isr"],
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "peerDependencies": {
+    "next": ">=14"
+  }
 }
