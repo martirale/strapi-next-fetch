@@ -10,6 +10,18 @@
   "files": [
     "src"
   ],
+  "author": {
+    "name": "Alejandro Mártir",
+    "url": "https://alemartir.com"
+  },
+  "homepage": "https://github.com/martirale/strapi-next-fetch#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/martirale/strapi-next-fetch.git"
+  },
+  "bugs": {
+    "url": "https://github.com/martirale/strapi-next-fetch/issues"
+  },
   "keywords": ["strapi", "next.js", "fetch", "cms", "app-router", "isr"],
   "license": "MIT",
   "engines": {
