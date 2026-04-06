@@ -16,11 +16,11 @@ If you prefer the official route, [Strapi's SDK](https://www.npmjs.com/package/@
 ## Install
 
 ```bash
-# npm
-npm install @itsmrtr/strapi-next-fetch
-
 # pnpm
 pnpm add @itsmrtr/strapi-next-fetch
+
+# npm
+npm install @itsmrtr/strapi-next-fetch
 
 # yarn
 yarn add @itsmrtr/strapi-next-fetch
@@ -177,9 +177,24 @@ STRAPI_API_URL=https://your-strapi-instance.com
 STRAPI_API_TOKEN=your-api-token
 ```
 
+## Using with other frameworks (Astro, etc.)
+
+The package works outside Next.js — the client, auth headers, and query string serialization are framework-agnostic. The only thing to skip is the third `options` argument, since `cache` and `revalidate` are Next.js extensions to `fetch` and have no effect elsewhere.
+
+```js
+// works fine in Astro, plain Node.js, etc.
+const data = await strapi.fetch("/api/articles", {
+  fields: ["title", "slug"],
+  sort: ["date:desc"],
+});
+```
+
+`buildUrl` also works anywhere with no caveats.
+
 ## Compatibility
 
-- Next.js 14+ (App Router)
+- Next.js 14+ (App Router) — full support including cache options
+- Astro, and other Node.js frameworks — supported, omit cache options
 - Strapi v4 and v5
 - Node.js 18+
 
